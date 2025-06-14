@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Feliz Dia dos Namorados 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #ffd6e8, #ffe6f0);
+      font-family: 'Dancing Script', cursive;
+      text-align: center;
+      color: #d6336c;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-top: 30px;
+      animation: heartbeat 1.5s infinite;
+      color: #ff0066;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    /* Container da foto + botão */
+    #foto-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    #fotoPrincipal, #fotoExtra {
+      width: 250px;
+      border-radius: 20px;
+      border: 8px solid #ff66a3;
+      box-shadow: 0 8px 20px rgba(255, 105, 180, 0.5);
+      transition: opacity 0.5s ease;
+    }
+
+    #fotoExtra {
+      display: none;
+      opacity: 0;
+    }
+
+    /* Botão + */
+    #btnMais {
+      font-size: 2.5em;
+      padding: 10px 22px;
+      border-radius: 50%;
+      background-color: #ff4da6;
+      color: white;
+      border: none;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    #btnMais:hover {
+      background-color: #e60073;
+      transform: scale(1.1);
+    }
+
+    .mensagem {
+      max-width: 700px;
+      background: #fff0f5;
+      margin: 30px auto;
+      padding: 25px;
+      font-size: 1.5em;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .btn-amor {
+      background-color: #ff4da6;
+      color: white;
+      padding: 12px 24px;
+      font-size: 1.4em;
+      border: none;
+      border-radius: 30px;
+      margin: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-family: 'Dancing Script', cursive;
+      position: relative;
+    }
+
+    .btn-amor:hover {
+      background-color: #e60073;
+      transform: scale(1.1);
+    }
+
+    /* Corações caindo */
+    .heart {
+      position: fixed;
+      top: -2em;
+      color: #ff66cc;
+      animation: fall 12s linear infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+
+    /* Coração gigante */
+    #coraçao-gigante {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 100px;
+      color: #ff0066;
+      z-index: 999;
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1) translate(-50%, -50%); }
+      50% { transform: scale(1.3) translate(-50%, -50%); }
+    }
+
+    .explosion-heart {
+      position: absolute;
+      font-size: 30px;
+      animation: explode 1s ease-out forwards;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    @keyframes explode {
+      to {
+        transform: translate(var(--x), var(--y)) scale(0.5);
+        opacity: 0;
+      }
+    }
+
+    .emoji {
+      position: absolute;
+      font-size: 50px;
+      animation: emoji-fall 1.2s ease-out forwards;
+      z-index: 999;
+      pointer-events: none;
+    }
+
+    @keyframes emoji-fall {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(100vh) scale(1.5); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Feliz Dia dos Namorados ❤️</h1>
+
+  <div id="foto-container">
+    <img src="foto.jpg" alt="Foto nossa" id="fotoPrincipal" />
+
+    <button id="btnMais" onclick="mostrarFotoExtra()">+</button>
+
+    <img src="foto2.jpg" alt="Foto extra" id="fotoExtra" />
+  </div>
+
+  <div class="mensagem">
+    Oi, momo!<br><br>
+    Vim aqui só pra dizer o quanto te amo e o quanto você é especial pra mim. Você foi a minha melhor escolha, e eu agradeço ao Papai do Céu todos os dias por ter colocado você na minha vida.<br><br>
+    Esse é o nosso primeiro Dia dos Namorados juntos, e eu espero que venham muitos e muitos outros. Eu te amo infinitamente, minha princesa. Pra sempre eu e você!<br><br>
+    Já passamos por muitas coisas, mas superamos tudo juntos. Obrigado por cada palavra de carinho, cada risada... você é a melhor parte da minha vida. Quero continuar compartilhando histórias e memórias com você, sempre e pra sempre.<br><br>
+    Espero que você nunca desista da gente — mesmo eu sendo um pouquinho insuportável às vezes, haha. Eu te amo demais! 💖
+  </div>
+
+  <div id="pedido">
+    <h2 style="font-size: 3em; margin-top: 40px; color: #ff0066;">Quer namorar comigo?</h2>
+
+    <div style="margin-top: 20px;">
+      <button class="btn-amor" onclick="responderSim()">Sim ❤️</button>
+      <button id="naoBtn" class="btn-amor" onmouseover="fugir()">Não 💔</button>
+    </div>
+  </div>
+
+  <div id="coraçao-gigante">❤️</div>
+
+  <audio id="musica" autoplay loop>
+    <source src="musica.mp3" type="audio/mpeg" />
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <script>
+    // Música autoplay
+    window.addEventListener('load', () => {
+      const musica = document.getElementById('musica');
+      musica.play().catch(() => {
+        console.log("Usuário precisa interagir para iniciar o áudio.");
+      });
+    });
+
+    // Corações caindo
+    const heartCount = 60;
+    for (let i = 0; i < heartCount; i++) {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 10 + 8) + "s";
+      heart.style.fontSize = (Math.random() * 24 + 16) + "px";
+      heart.innerHTML = "💖";
+      document.body.appendChild(heart);
+    }
+
+    // Função para mostrar a segunda foto com fade-in
+    function mostrarFotoExtra() {
+      const foto = document.getElementById("fotoExtra");
+      if (foto.style.display === "block") return; // já mostrando
+
+      foto.style.display = "block";
+      foto.style.opacity = 0;
+
+      let op = 0;
+      const fadeIn = setInterval(() => {
+        if (op >= 1) clearInterval(fadeIn);
+        foto.style.opacity = op;
+        op += 0.05;
+      }, 30);
+    }
+
+    // Função do SIM
+    function responderSim() {
+      alert("EU TE AMO MUITO! 💖💖💖");
+
+      const coracao = document.getElementById("coraçao-gigante");
+      coracao.style.display = "block";
+
+      setTimeout(() => {
+        coracao.style.display = "none";
+      }, 3000);
+
+      // Explosão de corações
+      for (let i = 0; i < 30; i++) {
+        const heart = document.createElement("div");
+        heart.className = "explosion-heart";
+        heart.innerHTML = "💘";
+        heart.style.left = "50%";
+        heart.style.top = "50%";
+        heart.style.setProperty('--x', (Math.random() * 400 - 200) + 'px');
+        heart.style.setProperty('--y', (Math.random() * 400 - 200) + 'px');
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 1000);
+      }
+
+      // Emojis de alegria subindo
+      const emojis = ['😍', '🥰', '😘', '🤗', '💞'];
+      for (let i = 0; i < 40; i++) {
+        const emoji = document.createElement("div");
+        emoji.className = "emoji";
+        emoji.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+        emoji.style.left = Math.random() * 100 + "vw";
+        emoji.style.top = Math.random() * 30 + "vh";
+        document.body.appendChild(emoji);
+        setTimeout(() => emoji.remove(), 1200);
+      }
+    }
+
+    // Botão "Não" foge
+    function fugir() {
+      const btn = document.getElementById("naoBtn");
+      const x = Math.random() * (window.innerWidth - btn.offsetWidth);
+      const y = Math.random() * (window.innerHeight - btn.offsetHeight);
+      btn.style.position = "absolute";
+      btn.style.left = x + "px";
+      btn.style.top = y + "px";
+    }
+  </script>
+
+</body>
+</html>
